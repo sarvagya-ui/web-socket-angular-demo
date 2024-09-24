@@ -1,8 +1,28 @@
 <div>
-  <h1>WebSocket Demo</h1>
-  <input [(ngModel)]="message" (keyup.enter)="sendMessage()">
-  <button (click)="sendMessage()">Send</button>
-  <ul>
-    <li *ngFor="let msg of messages">{{ msg }}</li>
-  </ul>
+  <h2>Debug Info:</h2>
+  <p>Username: {{ username }}</p>
+  <p>Temp Username: {{ tempUsername }}</p>
+</div>
+
+<div *ngIf="!username">
+  <h2>Enter your username:</h2> <input [(ngModel)]="tempUsername" (keyup.enter)="setUsername()">
+  <button (click)="setUsername()">Join Chat</button>
+</div>
+
+<div *ngIf="username">
+  <h1>WebSocket Multi-User Chat</h1>
+  <h3>Welcome, {{ username }}!</h3>
+  <div class="chat-container">
+    <div class="user-list">
+      <h3>Online Users</h3>
+      <ul>
+        <li *ngFor="let user of users">{{ user }}</li>
+      </ul>
+    </div>
+    <div class="chat-messages">
+      <ul>
+        <li *ngFor="let msg of messages"> <strong>{{ msg.user }}:</strong> {{ msg.message }} </li>
+      </ul> <input [(ngModel)]="message" (keyup.enter)="sendMessage()"> <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
 </div>

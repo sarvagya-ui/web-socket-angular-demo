@@ -1,0 +1,12 @@
+.chat-container {
+  display: flex;
+}
+.user-list {
+  width: 200px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+.chat-messages {
+  flex-grow: 1;
+  padding: 10px;
+}
